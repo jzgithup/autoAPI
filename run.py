@@ -7,7 +7,7 @@ import os,time
 
 def get_test_suite():
     try:
-        discover = unittest.defaultTestLoader.discover(r'C:\Users\GN\Desktop\zhaoliangji\scripts', pattern='*_test.py')
+        discover = unittest.defaultTestLoader.discover(r'D:\py\jekins\workspace\autoapi\scripts', pattern='*_test.py')
         suite_m = getTestSuite(discover)
         suite_c = getTestCases(suite_m)
         return suite_c
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     current_time = time.strftime('%Y%m%d_%H%M%S')
     filedir = './report/' + current_time + '.html'
     fp = open(filedir, 'wb+')
-    hrunner = HTMLTestRunner(stream=fp, title=r'测试报告', description='描述')
+    hrunner = HTMLTestRunner.HTMLTestRunner(stream=fp, title=r'测试报告', description='描述')
     hrunner.run(discover)
     fp.close()
 
