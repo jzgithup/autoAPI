@@ -66,11 +66,10 @@ class GetExcellData():
 
 # 获取文件绝对路径
 # local_dir:本地文件路径   filename：文件名
-def getFileAbspath(local_dir,filename=None):
+def getFileAbspath(local_dir):
     try:
         abspath = os.path.abspath(local_dir)
-        path = os.path.join(abspath,filename)
-        return path
+        return abspath
     except:
         print('获取文件绝对路径失败')
 # 将请求参数写入字典
@@ -107,7 +106,8 @@ def getTestSuite(discover):
     try:
         cover_suite = copy.deepcopy(discover)
         # 过滤不需要执行的模块
-        m = getExcelTestSuiteOrTestCases('C:/Users/GN/Desktop/zhaoliangji/testcases/testcase1.xlsx',1,1,'NO')
+        casepath = getFileAbspath('../testcases/testcase1.xlsx')
+        m = getExcelTestSuiteOrTestCases(casepath,1,1,'NO')
         for i in range(len(m)):
             for j in range(discover._tests.__len__()):
                 d = discover._tests[j]
@@ -121,7 +121,8 @@ def getTestCases(discover_suite):
     try:
         cover_cases = copy.deepcopy(discover_suite)
         # 过滤不需要执行的用例
-        t = getExcelTestSuiteOrTestCases('C:/Users/GN/Desktop/zhaoliangji/testcases/testcase1.xlsx',0,6,'NO')
+        casepath = getFileAbspath('../testcases/testcase1.xlsx')
+        t = getExcelTestSuiteOrTestCases(casepath,0,6,'NO')
         for i in range(len(t)):
             for j in range(discover_suite._tests.__len__()):
                 s_m = discover_suite._tests[j]
@@ -137,11 +138,13 @@ def getTestCases(discover_suite):
 
 if __name__ == '__main__':
     discover = unittest.defaultTestLoader.discover('../scripts', pattern='*_test.py')
-    d = getExcelTestSuiteOrTestCases('C:/Users/GN/Desktop/zhaoliangji/testcases/testcase1.xlsx',1,1,'NO')
+    casepath = getFileAbspath('../testcases/testcase1.xlsx')
+    print(casepath)
+    d = getExcelTestSuiteOrTestCases(casepath,1,1,'NO')
     print(d)
-    m = getTestSuite(discover)
-    c = getTestCases(m)
-    print(c)
+    # m = getTestSuite(discover)
+    # c = getTestCases(m)
+    # print(c)
 
     # d = setRequestDataForDic('asd=1,bvc=2')
     # print(d)

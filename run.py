@@ -7,7 +7,7 @@ import os,time
 
 def get_test_suite():
     try:
-        discover = unittest.defaultTestLoader.discover(r'D:\py\jekins\workspace\autoapi\scripts', pattern='*_test.py')
+        discover = unittest.defaultTestLoader.discover(r'./scripts', pattern='*_test.py')
         suite_m = getTestSuite(discover)
         suite_c = getTestCases(suite_m)
         return suite_c
@@ -15,8 +15,6 @@ def get_test_suite():
         print('开始执行用例失败')
 
 if __name__ == '__main__':
-    # runner = unittest.TextTestRunner()
-    # runner.run(get_test_suite())
 
     discover = get_test_suite()
     current_time = time.strftime('%Y%m%d_%H%M%S')
@@ -26,7 +24,11 @@ if __name__ == '__main__':
     hrunner.run(discover)
     fp.close()
 
-    # get_test_suite()
+
+    # runner = unittest.TextTestRunner()
+    # runner.run(get_test_suite())
+
+
 
 
 

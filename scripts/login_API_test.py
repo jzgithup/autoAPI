@@ -7,9 +7,9 @@ from libs.ShareModules import getFileAbspath
 
 class TestLoginAPI(unittest.TestCase):
     def setUp(self) -> None:
-        print('用例开始')
+        pass
     def tearDown(self) -> None:
-        print('用例结束')
+        pass
 
     def test_01(self):
         print('01')
