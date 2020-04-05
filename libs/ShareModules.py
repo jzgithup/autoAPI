@@ -98,7 +98,7 @@ def getExcelTestSuiteOrTestCases(path,sheetID,colID,colstr):
                 # 将不执行的测试集/测试用例添加到列表中
                 t.append(tests[0])
     except:
-        print('获取用例失败')
+        pass
     return t
 
 # 获取要执行的测试集
